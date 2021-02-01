@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<body>
+<div th:fragment="myheadernav">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tb-contact">
+                        <p><i class="fas fa-envelope"></i>shine.with.the.sun@gmail.com</p>
+                        <p><i class="fas fa-phone-alt"></i>+92 321 4567890</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tb-menu">
+                        <a th:href="@{/write_for_us}">Write for us</a>
+                        <a th:href="@{/login}" target="_blank">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

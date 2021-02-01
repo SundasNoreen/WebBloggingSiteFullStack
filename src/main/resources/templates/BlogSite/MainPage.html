@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/MainStyleHead :: styles"></head>
+<body>
+<div th:replace="fragments/TopBar :: myheadernav"></div>
+<div th:replace="fragments/TitleBar :: mytitle"></div>
+<div th:replace="fragments/NavBar :: mynav"></div>
+<div class="top-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 tn-left">
+                <div class="row tn-slider">
+                    <div class="col-md-6" th:each="a:${a}">
+                        <div class="imp">
+                            <img th:src="@{'data:image/jpg;base64,'+${a.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${a.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(a.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="tn-title">
+                                <a th:href="@{/blog_{id}(id = ${a.BlogID})}" th:text="${a.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 tn-right">
+                <div class="row">
+                    <div class="col-md-6" th:each="a1: ${a}">
+                        <div class="tn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${a1.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${a1.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(a1.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="tn-title">
+                                <a th:href="@{/blog_{id}(id = ${a1.BlogID})}" th:text="${a1.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cat-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'national')}" style="text-transform: uppercase;color:black; font-size: 25px;">National</a></h2>
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="b: ${b}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${b.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${b.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(b.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${b.BlogID})}" th:text="${b.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'global')}" style="text-transform: uppercase;color:black; font-size: 25px;">Global</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="c: ${c}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${c.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${c.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(c.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${c.BlogID})}" th:text="${c.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cat-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'education')}" style="text-transform: uppercase;color:black; font-size: 25px;">Education</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="d: ${d}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${d.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${d.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(d.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${d.BlogID})}" th:text="${d.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'technology')}" style="text-transform: uppercase;color:black; font-size: 25px;">Technology</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="e: ${e}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${e.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${e.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(e.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${e.BlogID})}" th:text="${e.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<!-- Category News End-->
+
+<!-- Category News Start-->
+<div class="cat-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'media logs')}" style="text-transform: uppercase;color:black; font-size: 25px;">Media Logs</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="f: ${f}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${f.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${f.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(f.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${f.BlogID})}" th:text="${f.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'life style')}" style="text-transform: uppercase;color:black; font-size: 25px;">Life Style</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="g: ${g}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${g.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${g.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(g.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${g.BlogID})}" th:text="${g.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Category News End-->
+<!-- Category News Start-->
+<div class="cat-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'view point')}" style="text-transform: uppercase;color:black; font-size: 25px;">View Point</a></h2>
+
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="h: ${h}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${h.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${h.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(h.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${h.BlogID})}" th:text="${h.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2><a th:href="@{/{category}(category = 'health')}" style="text-transform: uppercase;color:black; font-size: 25px;">Health</a></h2>
+                <div class="row cn-slider">
+                    <div class="col-md-6" th:each="i: ${i}">
+                        <div class="cn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${i.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${i.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(i.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="cn-title">
+                                <a th:href="@{/blog_{id}(id = ${i.BlogID})}" th:text="${i.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Category News End-->
+
+
+
+<!-- Main News Start-->
+<div class="main-news">
+    <div class="container">
+        <div class="row">
+                <h2>You may also Like:</h2>
+                <div class="row">
+                    <div class="col-md-3" th:each="j: ${j}">
+                        <div class="mn-img">
+                            <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${j.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(j.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            </div>
+                            <div class="mn-title">
+                                <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- Main News End-->
+
+<!-- Footer Start -->
+<div th:replace="fragments/Footer :: foot"></div>
+
+
+</body>
+</html>

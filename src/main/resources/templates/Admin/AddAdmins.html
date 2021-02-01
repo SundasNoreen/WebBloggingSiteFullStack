@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General:: stylesheet"></div>
+<style>
+    .form-header{
+        margin-left: 250px;
+    }
+.form-header h2{
+    margin-top: 15px;
+    text-align: center;
+}
+.form-header h3{
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.form-header label
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+ .form-input
+ {
+        background: lightcyan; border: 1px solid black; padding: 8px; width: 100%;  margin-bottom:15px;
+}
+.wrap{
+        width: 500px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+@media only screen and (max-width: 600px) {
+    .wrap{
+        width:350px;
+        border: 2px solid grey;
+        padding: 1rem;}
+    .but{
+        border: 1px solid;
+        color: black;
+        padding: 3px;
+        alignment: center;
+        width: 100%;
+    }
+    }
+.but{
+        background: mediumseagreen;font-weight: bold; border: 2px solid  ; color: black; padding: 5px;  text-transform: uppercase; cursor: pointer; alignment: center;width: 100%;
+    }
+.wrap p{
+    margin-top: 5px;
+    color: black;
+    text-align: center;
+}
+
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <h2>Add New Admins</h2>
+
+    <form action = "" class="wrap"  method = "post">
+
+                 <label>Name </label><br>
+                <input type = "text" class="form-input" name = "Name" placeholder = "Name" required/><br>
+                <label >Email Address</label><br>
+                <input type = "email" class="form-input" name = "EmailID" placeholder = "EmailID" required/><br>
+                <label >Login ID</label><br>
+                <input type = "text" class="form-input" name = "loginID" placeholder = "LoginID" /><br>
+                <label >Password</label><br>
+                <input type = "text"  class="form-input" name = "PassWord" placeholder = "PassWord" /><br>
+            <input type = "submit" class="but" value = "Add" />
+        <p th:text="${msg}">Error</p>
+      </form>
+</div></body></html>

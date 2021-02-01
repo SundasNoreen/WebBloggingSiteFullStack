@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .form-header
+    {
+        margin-left: 150px;
+    }
+    .form-header h2
+    {
+        margin-top: 15px; text-align: center;
+    }
+    .form-header h3
+    {
+        margin-top: 15px; text-align: center; margin-bottom: 15px;
+    }
+    .form-header label
+    {
+        margin-top: 15px; margin-bottom: 15px; text-align: center;
+    }
+    .wrap{
+        width: 500px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+    @media only screen and (max-width: 600px) {
+        .wrap{
+            width:300px;
+            border: 2px solid grey;
+            padding: 1rem;}
+        .but{
+            border: 1px solid;
+            color: black;
+            padding: 3px;
+            alignment: center;
+            width: 100%;
+        }
+    }
+    .but{
+        background: darkcyan;font-weight: bold; border: 2px solid  ; color: black; padding: 5px;  text-transform: uppercase;alignment: center;width: 100%;
+    }
+    .wrap p{
+        margin-top: 5px;
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <h2>Deleting Blog</h2>
+    <form action = "@{'/delete_{id}'}" class="wrap"  method = "post" th:each="a:${a}">
+        <h3 style="color: darkcyan; font-weight: bold;">Blog Title: </h3>
+        <h3 th:text="${a.Title}" >Blog</h3>
+        <h3 style="color: darkcyan; font-weight: bold;">Written By: </h3>
+        <h3 th:text="${a.Author}" >Blog</h3><br>
+        <p class="but" th:text="${error}">Invalid.</p>
+    </form>
+</div>
+</body>
+</html>
