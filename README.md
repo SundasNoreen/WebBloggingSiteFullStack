@@ -1,4 +1,4 @@
-<h2>Shine with the Sun</h2>
+<h2>Full Stack Web Blogging Site</h2>
 <h3>Description</h3>
 Awareness and discussing opinions on all sort of issues is very necessary in this fast moving world. The project aims at providing a platform where a people can share their views on different subjects.
 <h3>Features of Web Blogging Site</h3>
