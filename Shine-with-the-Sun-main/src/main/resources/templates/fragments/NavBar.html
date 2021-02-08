@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<body>
+<div th:fragment="mynav">
+    <div class="nav-bar">
+        <div class="container">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a th:href="@{'/'}" class="nav-item nav-link">Home</a>
+                        <a th:href="@{/{category}(category = 'national')}" class="nav-item nav-link">National</a>
+                        <a th:href="@{/{category}(category = 'global')}" class="nav-item nav-link">Global</a>
+                        <a th:href="@{/{category}(category = 'education')}" class="nav-item nav-link">Education</a>
+                        <a th:href="@{/{category}(category = 'technology')}" class="nav-item nav-link">Technology</a>
+                        <a th:href="@{/{category}(category = 'view point')}" class="nav-item nav-link">View Point</a>
+                        <a th:href="@{/{category}(category = 'media logs')}" class="nav-item nav-link">MediaLogs</a>
+                        <a th:href="@{/{category}(category = 'life style')}" class="nav-item nav-link">LifeStyle</a>
+                        <a th:href="@{/{category}(category = 'health')}" class="nav-item nav-link">Health</a>
+                    </div>
+                    <div class="social ml-auto">
+                        <a href="https://twitter.com/NoreenSundas" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/snoreen921/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/sundas-noreen/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Breadcrumb Start -->
+            <div class="breadcrumb-wrap">
+                <div class="container">
+                </div>
+            </div>
+            <!-- Breadcrumb End -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

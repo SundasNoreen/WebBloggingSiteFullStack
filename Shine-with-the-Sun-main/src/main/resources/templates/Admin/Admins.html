@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .header{
+        margin-left:250px;
+    }
+    .header h2
+    {
+        padding: 4px;  color: black;  text-align: center;
+    }
+    .header h3
+    {
+        text-align: center;
+    }
+    table
+    {
+        margin-top: 10px; text-align: center;
+    }
+    .center
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    tr:nth-child(even) {background-color: lightcyan;}
+    table a{
+        color: #660033;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .but{
+        margin-top: 20px;
+        text-align:center;background: darkcyan;color:black;
+        padding: 5px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-align: center;font-weight: bold; border: 2px solid  ; cursor: pointer; alignment: center;width:50%;
+    }
+    .but a{
+        color:black;
+        padding: 5px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="header">
+    <h2><strong>Administrators</strong></h2>
+    <h3><strong>Shine With The Sun</strong></h3>
+    <center><div class="but"><a th:href="@{/add_admins}">Add Admin</a></div></center>
+    <table class="center" border="1" cellpadding="3" cellspacing="3">
+        <tr>
+            <td><strong>Name</strong></td>
+            <td><strong>Email ID</strong></td>
+            <td><strong>Remove Admin</strong></td>
+        </tr>
+        <tr th:each="a:${entries}">
+            <td th:text="${a.Name}">2011</td>
+            <td th:text="${a.EmailID}">Title</td>
+            <td><a th:href="@{/remove_{id}(id = ${a.LoginID})}">Remove</a></td>
+        </tr></table></div>
+</body></html>

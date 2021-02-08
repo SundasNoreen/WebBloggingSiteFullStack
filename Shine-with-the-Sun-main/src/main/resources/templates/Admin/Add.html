@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .form-header
+    {
+        margin-left: 250px;
+    }
+    .form-header h2
+    {
+        margin-top: 15px; text-align: center;
+    }
+    .form-header h3
+    {
+        margin-top: 15px; text-align: center; margin-bottom: 15px;
+    }
+    .form-header label
+    {
+        margin-top: 15px; margin-bottom: 15px; text-align: center;
+    }
+    #category {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    #img {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    .form-input
+     {
+        background: lightcyan; border: 1px solid black; padding: 8px; width: 100%;  margin-bottom:15px;
+     }
+    .wrap{
+        width: 600px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+    @media only screen and (max-width: 600px) {
+        .wrap{
+            width:400px;
+            border: 2px solid grey;
+            padding: 1rem;}
+        .but{
+            border: 1px solid;
+            color: black;
+            padding: 3px;
+            alignment: center;
+            width: 100%;
+        }
+    }
+    .but{
+        background: darkcyan; font-weight: bold; border: 2px solid  ; color: black; padding: 5px;  text-transform: uppercase; cursor: pointer; alignment: center;width: 100%;
+    }
+    .wrap p{
+        margin-top: 5px;
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <h2>Add a Blog</h2>
+        <form action = "" class="wrap"  method = "post" enctype="multipart/form-data">
+                 <label>Title of Blog</label><br>
+                    <input type = "text" class="form-input" name = "Title" placeholder = "Title" autofocus  /><br>
+                 <label>Category</label><br>
+                    <select id="category" name="category">
+                        <option value="National">National</option>
+                        <option value="Global">Global</option>
+                        <option value="Education">Education</option>
+                        <option value="Technology">Technology</option>
+                        <option value="View Point">View Point</option>
+                        <option value="Media Logs">Media Logs</option>
+                        <option value="Life Style">Life Style</option>
+                        <option value="Health">Health</option>
+                    </select>
+                <br>
+                 <label>Author Details</label><br>
+                    <input type = "text" class="form-input" name = "Name" placeholder = "Name" required /><br>
+                    <input type = "text" class="form-input" name = "Email" placeholder = "Email" required /><br>
+                    <input type = "text" class="form-input" name = "Phone" placeholder = "Contact Number"  /><br>
+                    <input type = "text" class="form-input" name = "City" placeholder = "City" /><br>
+                    <input type = "text" class="form-input" name = "intro" placeholder = "Intro" required /><br>
+
+            <label>Blog</label><br>
+            <textarea rows="15" class="form-input" name = "Blog" placeholder = "Blog Content" ></textarea><br>
+            <label for="img">Select Front Image:</label>
+            <input type="file" id="img" name="Picture" accept="image/*">
+            <input type = "submit" class="but" value = "Add Blog" />
+            <p th:text="${msg}">Error</p>
+        </form>
+</div>
+</body></html>

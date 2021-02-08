@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<body>
+<div th:fragment="foot">
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Get in Touch</h3>
+                        <div class="contact-info">
+                            <p><i class="fa fa-map-marker"></i>Multan Cantt</p>
+                            <p><i class="fa fa-envelope"></i>shine.with.the.sun@gmail.com</p>
+                            <p><i class="fa fa-phone"></i>+92 321 4567890</p>
+                            <div class="social">
+                                <a href="https://twitter.com/NoreenSundas" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/snoreen921/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/in/sundas-noreen/"target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Our Categories</h3>
+                        <ul>
+                            <li><a th:href="@{/{category}(category = 'national')}" >National</a></li>
+                            <li><a th:href="@{/{category}(category = 'global')}" >Global</a></li>
+                            <li><a th:href="@{/{category}(category = 'education')}" >Education</a></li>
+                            <li><a th:href="@{/{category}(category = 'technology')}" >Technology</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Our Categories</h3>
+                        <ul>
+                            <li><a th:href="@{/{category}(category = 'view point')}">View Point</a></li>
+                            <li><a th:href="@{/{category}(category = 'media logs')}">MediaLogs</a></li>
+                            <li><a th:href="@{/{category}(category = 'life style')}">LifeStyle</a></li>
+                            <li><a th:href="@{/{category}(category = 'health')}">Health</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Stay Updated</h3>
+                        <div class="newsletter">
+                            <p>
+                                Our Team is always here to help you. Follow us on Social Media to stay upated with our Recent Blogs.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Footer Menu Start -->
+    <div class="footer-menu">
+        <div class="container">
+            <div class="f-menu">
+                <a th:href="@{/write_for_us}">Write for us</a>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Menu End -->
+    <!-- Footer Bottom Start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 copyright">
+                    <p>Copyright &copy; 2021 Some Rights Reserved</p>
+                </div>
+                <div class="col-md-6 template-by">
+                    <p>Sundas Noreen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Bottom End -->
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</div>
+</body>
+</html>

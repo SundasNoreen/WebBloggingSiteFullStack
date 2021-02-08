@@ -16,9 +16,8 @@ public class Blog
     private byte[] Pic;
     private String encode;
     private Date date;
-    private Blob image;
-    public void setImage(Blob image){this.image=image;}
-    public Blob getImage(){return image;}
+
+
     public void setBlogID(int BlogID) {
         this.BlogID = BlogID;
     }
@@ -104,7 +103,9 @@ public class Blog
     public Date getDate() {
         return date;
     }
-Blog(){}
+
+    Blog(){}
+
     Blog(int BlogID, String Title, String Category, String Author, int AuthorID, String Blog, String Disclaimer, String Admin, String encode, Date date) {
         this.BlogID = BlogID;
         this.Title = Title;
@@ -116,6 +117,18 @@ Blog(){}
         this.Admin = Admin;
         this.encode = encode;
         this.date = date;
+    }
+    Blog(int BlogID, String Title, String Category, String Author, int AuthorID, String Blog, String Disclaimer, String Admin, String encode, byte[] pic) {
+        this.BlogID = BlogID;
+        this.Title = Title;
+        this.Category=Category;
+        this.Author = Author;
+        this.AuthorID = AuthorID;
+        this.Blog = Blog;
+        this.Disclaimer = Disclaimer;
+        this.Admin = Admin;
+        this.encode = encode;
+        this.Pic = pic;
     }
     Blog(int BlogID, String Title, String Category, String Author, int AuthorID, String Blog, String Admin) {
         this.BlogID = BlogID;

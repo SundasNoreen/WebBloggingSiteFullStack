@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .form-header
+    {
+        margin-left: 250px;
+    }
+    .form-header h2
+    {
+        margin-top: 15px; text-align: center;
+    }
+    .form-header h3
+    {
+        margin-top: 15px; text-align: center; margin-bottom: 15px;
+    }
+    .form-header label
+    {
+        margin-top: 15px; margin-bottom: 15px; text-align: center;
+    }
+    #category {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    #img {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    .form-input
+    {
+        background: lightcyan; border: 1px solid black; padding: 8px; width: 100%;  margin-bottom:15px;
+    }
+    .wrap{
+        width: 600px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+    @media only screen and (max-width: 600px) {
+        .wrap{
+            width:400px;
+            border: 2px solid grey;
+            padding: 1rem;}
+        .but{
+            border: 1px solid;
+            color: black;
+            padding: 3px;
+            alignment: center;
+            width: 100%;
+        }
+    }
+    .but{
+        background: darkcyan; font-weight: bold; border: 2px solid  ; color: black; padding: 5px;  text-transform: uppercase; cursor: pointer; alignment: center;width: 100%;
+    }
+    .wrap p{
+        margin-top: 5px;
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <h2>Edit a Blog</h2>
+    <form action = "" class="wrap"  method = "post" th:each="a:${here}">
+        <label >Title of Blog</label><br>
+        <input  th:value="${a.Title}" type = "text" class="form-input" name = "Title" placeholder = "Title" autofocus required /><br>
+        <label>Blog</label><br>
+        <textarea th:text="${a.Blog}" rows="15" class="form-input" name = "Blog" placeholder = "Blog Content" required></textarea><br>
+        <input type = "submit" class="but" value = "Edit Blog"/>
+    </form>
+    <p style="font-size: 18px;margin-top: 20px; text-align: center; font-weight: bold; color: darkcyan;" th:text="${msg}">Error</p>
+</div>
+</body></html>

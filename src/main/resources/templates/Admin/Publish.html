@@ -62,11 +62,11 @@
 <div th:replace="fragments/General :: sidebar"></div>
 <div class="form-header">
     <h2>Publish a Blog</h2>
-    <form action = "" class="wrap"  method = "post" th:each="a:${here}">
+    <form action = "" class="wrap"  method = "post"enctype="multipart/form-data" th:each="a:${here}">
         <label >Title of Blog</label><br>
         <input  th:value="${a.Title}" type = "text" class="form-input" name = "Title" placeholder = "Title" autofocus required /><br>
         <label>Category</label><br>
-        <select id="category" name="category">
+        <select id="category" name="category" required>
             <option value="National">National</option>
             <option value="Global">Global</option>
             <option value="Education">Education</option>
@@ -87,7 +87,7 @@
         <label>Blog</label><br>
         <textarea th:text="${a.Blog}" rows="15" class="form-input" name = "Blog" placeholder = "Blog Content" required></textarea><br>
         <label for="img">Select Front Image:</label>
-        <input type="file" id="img" name="Photo" accept="image/*">
+        <input type="file" id="img" name="Picture" accept="image/*" required>
         <input type = "submit" class="but" value = "Add Blog" />
 
     </form>

@@ -13,26 +13,26 @@
                             <form th:action="@{/write_for_us}" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="text" id="Name"  name="Name" class="form-control" placeholder="Your Name" />
+                                        <input type="text" id="Name"  name="Name" class="form-control" placeholder="Your Name" required/>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="email" id="Email"  name="Email" class="form-control" placeholder="Your Email" />
+                                        <input type="email" id="Email"  name="Email" class="form-control" placeholder="Your Email"required/>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="text" id="City" name="City" class="form-control" placeholder="City" />
+                                        <input type="text" id="City" name="City" class="form-control" placeholder="City" required/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <input type="tel" id="Phone"  name="Phone" class="form-control" placeholder="Phone Number" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="Title"  name="Title" class="form-control" placeholder="Title of Blog" />
+                                    <input type="text" id="Title"  name="Title" class="form-control" placeholder="Title of Blog" required/>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control"  name="Blog" id="Blog" rows="15" placeholder="Blog (Minimum 300 Words)"></textarea>
+                                    <textarea class="form-control"  name="Blog" id="Blog" rows="15" placeholder="Blog (Minimum 300 Words)" required></textarea>
 
                                     <div class="form-group">
-                                        <textarea class="form-control"  name="intro" id="intro" rows="2" placeholder="About Yourself (Minimum 100 Words)"></textarea>
+                                        <textarea class="form-control"  name="intro" id="intro" rows="2" placeholder="About Yourself (Minimum 100 Words)" required></textarea>
                                     </div>
                                 <div><button class="btn" type="submit">Submit Blog</button></div>
                                 <p style="font-size: 18px; color: darkcyan; font-weight: bold" th:text="${msg}" >Message</p>

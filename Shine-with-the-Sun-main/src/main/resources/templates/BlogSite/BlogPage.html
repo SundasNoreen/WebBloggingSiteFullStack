@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/MainStyleHead :: styles"></head>
+<body>
+<div th:replace="fragments/TopBar :: myheadernav"></div>
+<div th:replace="fragments/TitleBar :: mytitle"></div>
+<div th:replace="fragments/NavBar :: mynav"></div>
+
+<div class="single-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8" >
+                <div class="sn-container" th:each="a:${a}">
+                    <div class="sn-img">
+                        <img th:src="@{'data:image/jpg;base64,'+${a.encode}}"/>
+                        <div class="cat-name"><h5 th:text="${a.Category}">Category</h5></div>
+                        <div class="date1"></div>
+                    </div>
+                    <div class="sn-content">
+                        <h1 style="font-size: 23px;" class="sn-title" th:text="${a.Title}">Title</h1>
+                        <a style="font-weight: bold;color: darkcyan; text-transform: uppercase; font-size: 18px" th:href="@{/author_{id}(id = ${a.AuthorID})}" th:text="${a.Author}">Author</a>
+                        <h2 style="font-size: 16px; margin-bottom: 10px;" th:text="${#dates.format(a.date, 'MMMM dd,yyyy')}">January 22,2021</h2>
+                        <p  th:utext="${#strings.replace(a.Blog,'&#10;','&lt;br&gt;')}">
+                           This is my Blog.
+                        </p>
+                        <h2 style="font-size: 17px; margin-bottom: 2px;">Disclaimer:</h2>
+                        <p  th:utext="${#strings.replace(a.Disclaimer,'&#10;','&lt;br&gt;')}">
+                            This is my Blog.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="sn-related">
+                    <h2 style="text-transform: uppercase; font-size: 25px;">Recent Blogs</h2>
+                    <div class="row sn-slider">
+                        <div class="col-md-4" th:each="b:${b}">
+                            <div class="sn-img">
+                                <img th:src="@{'data:image/jpg;base64,'+${b.encode}}"/>
+                                <div class="cat-name"><h5 th:text="${b.Category}">Category</h5></div>
+                                <div class="date"><h6 th:text="${#dates.format(b.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                                </div>
+                                <div class="sn-title">
+                                    <a th:href="@{/blog_{id}(id = ${b.BlogID})}" th:text="${b.Title}">Title</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="sidebar-widget">
+                        <h2 class="sw-title"
+                        style="text-transform: uppercase; font-size: 25px;">From this Category</h2>
+                        <div class="news-list">
+                            <div class="nl-item" th:each="c:${c}">
+                                <div class="nl-img">
+                                    <img th:src="@{'data:image/jpg;base64,'+${c.encode}}"/>
+                                </div>
+                                <div class="nl-title">
+                                    <a th:href="@{/blog_{id}(id = ${c.BlogID})}" th:text="${c.Title}">Title</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <div class="image">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <div class="tab-news">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="pill" href="#featured">Featured</a>
+                                </li>
+                            </ul>
+                            <br>
+                            <div class="tn-news" th:each="j:${j}">
+                                <div class="tn-img">
+                                    <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
+                                </div>
+                                    <div class="tn-title">
+                                        <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
+                                    </div>
+                            </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<!-- Single News End-->
+
+<!-- Footer Start -->
+<div th:replace="fragments/Footer :: foot"></div>
+<!-- Footer End -->
+
+</body>
+</html>

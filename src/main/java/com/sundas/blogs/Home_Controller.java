@@ -1,18 +1,13 @@
 // Web Blogging Site by Sundas Noreen
 
 package com.sundas.blogs;
-import org.springframework.context.annotation.Bean;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.beans.BeanProperty;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Blob;
 import java.lang.*;
 
 @Controller
@@ -346,7 +341,7 @@ public class Home_Controller
 
     // Manually Add a Blog.
     @PostMapping ("/publish_{id}")
-    public String Add_Entries (Model model, @ModelAttribute Author MyObj, @ModelAttribute Blog blog) throws IOException,SQLException
+    public String Add_Entries (Model model, @ModelAttribute Author MyObj, @ModelAttribute Blog blog, @RequestParam("Picture") MultipartFile Picture) throws IOException,SQLException
     {
         if (flag!=1) {
             String Name = MyObj.getName();
@@ -357,9 +352,10 @@ public class Home_Controller
             String Title = blog.getTitle();
             String Category = blog.getCategory();
             String Blog = blog.getBlog();
+            byte[] Pic = Picture.getBytes();
             int ID = MyObj.check_author(Name, Email, City, Intro, Phone);
             Admin_Blogs here = new Admin_Blogs();
-            boolean Flag = here.Add_Blog(Title, Category, Name, ID, Blog, username, null);
+            boolean Flag = here.Add_Blog(Title, Category, Name, ID, Blog, username,Pic);
             if (Flag) {
                 model.addAttribute("msg", "Blog Added Successfully");
             } else {
@@ -403,18 +399,10 @@ public class Home_Controller
         String Category = blog.getCategory();
         String Blog = blog.getBlog();
         String Admin = username;
+        byte[] Pic = Picture.getBytes();
         int id = Auth.check_author(Name,Email,City,intro,Phone);
         Admin_Blogs Admin1 = new Admin_Blogs();
-//        for (MultipartFile Picture : Bean.get) {
-//            byte[] bytes = Picture.getBytes();
-//            Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-//        }
-//        Picture=blog.getImgFile();//file from model attribute
-//        Blob blob=Hibernate.createBlob(savedFile.getInputStream());
-//        System.out.println(Picture);
-//        InputStream image = Picture.getInputStream();
-//        System.out.println(image);
-        boolean Flag = Admin1.Blog(Title,Category,Name,id,Blog,Admin,Picture);
+        boolean Flag = Admin1.Add_Blog(Title,Category,Name,id,Blog,Admin,Pic);
         if (Flag)
         {
             model.addAttribute("msg","Blog Added Successfully");
@@ -635,12 +623,64 @@ public class Home_Controller
         }
     }
 
+    @GetMapping ("/ads")
+    public String Ads (Model model) throws SQLException
+    {
+        if (flag!=1)
+        {
+            Page_To_Open = "Admin/Advertisement.html";
+            return Data.Connection(Page_To_Open, Error_Page);
+        }
+        else
+        {
+            model.addAttribute("error","You Need to Login First.");
+            return Data.Connection("BlogSite/SignIn.html",Error_Page);
+        }
+    }
+
+    @PostMapping ("/ads")
+    public String ads (Model model, @ModelAttribute Adverisements MyObj,@ModelAttribute Adverisements mnb,
+                       @ModelAttribute("Image1") MultipartFile Image1, @ModelAttribute ("Image2") MultipartFile Image2) throws SQLException, IOException {
+        if (flag!=1) {
+            Page_To_Open = "Admin/Advertisement.html";
+            String Msg;
+            String Hor_Link = MyObj.getLink_hor();
+            byte[] Hor_It = Image1.getBytes();
+            boolean Flag1 = MyObj.Add_Hor_Ad(Hor_Link, Hor_It);
+            String Ver_Link = mnb.getLink_ver();
+            byte[] Ver_It = Image2.getBytes();
+            boolean Flag2 = mnb.Add_Square_Ad(Ver_Link, Ver_It);
+            if (Flag1||Flag2) {
+                Msg = "Advertisements Added Successfully.";
+                model.addAttribute("msg", Msg);
+            } else {
+                Msg = "Advertisement couldn't be Added. Try Again Later.";
+                model.addAttribute("msg", Msg);
+            }
+            return Data.Connection(Page_To_Open, Error_Page);
+        }
+        else
+        {
+            model.addAttribute("error","You Need to Login First.");
+            return Data.Connection("BlogSite/SignIn.html",Error_Page);
+        }
+    }
+
+
     //************************************ BLOG SITE ***************************************//
 
     // Home Page for Blog Site.
     @RequestMapping("/")
     public String Home_Page (Model model) throws SQLException {
         Page_To_Open="BlogSite/MainPage.html";
+        // Advertisements
+        Adverisements Ad = new Adverisements();
+        ArrayList<Adverisements> ad = Ad.Horizontal();
+        model.addAttribute("ad",ad);
+        Adverisements Ad1 = new Adverisements();
+        ArrayList<Adverisements> ad1 = Ad1.Square();
+        model.addAttribute("ad1",ad1);
+
         Home_Page MyObj = new Home_Page();
         // First Four Blogs.
         ArrayList<Blog> a = MyObj.First_Four_Blogs();
@@ -672,6 +712,14 @@ public class Home_Controller
     @RequestMapping("/{category}")
     public String Category_Blog (Model model , @PathVariable("category") String category ) throws SQLException {
         Page_To_Open="BlogSite/Seperate.html";
+        // Advertisements
+        Adverisements Ad = new Adverisements();
+        ArrayList<Adverisements> ad = Ad.Horizontal();
+        model.addAttribute("ad",ad);
+        Adverisements Ad1 = new Adverisements();
+        ArrayList<Adverisements> ad1 = Ad1.Square();
+        model.addAttribute("ad1",ad1);
+
         List_Of_Blogs cat= new List_Of_Blogs();
         ArrayList<Blog> a = cat.category_page(category);
         model.addAttribute("a",a);
@@ -683,6 +731,13 @@ public class Home_Controller
     @RequestMapping("/blog_{id}")
     public String Full_Blog (Model model , @PathVariable("id") int id ) throws SQLException {
         Page_To_Open="BlogSite/BlogPage.html";
+        // Advertisements
+        Adverisements Ad = new Adverisements();
+        ArrayList<Adverisements> ad = Ad.Horizontal();
+        model.addAttribute("ad",ad);
+        Adverisements Ad1 = new Adverisements();
+        ArrayList<Adverisements> ad1 = Ad1.Square();
+        model.addAttribute("ad1",ad1);
         // Complete Blog.
         Complete_Blog full = new Complete_Blog();
         ArrayList<Blog> a = full.Full_Blog(id);
@@ -704,6 +759,13 @@ public class Home_Controller
     public String AuthorID (Model model , @PathVariable("id") int id ) throws SQLException
     {
         Page_To_Open="BlogSite/Author.html";
+        // Advertisements
+        Adverisements Ad = new Adverisements();
+        ArrayList<Adverisements> ad = Ad.Horizontal();
+        model.addAttribute("ad",ad);
+        Adverisements Ad1 = new Adverisements();
+        ArrayList<Adverisements> ad1 = Ad1.Square();
+        model.addAttribute("ad1",ad1);
         // Fetch Authors Details.
         Author Details = new Author();
         ArrayList <Author> b = Details.Details(id);
@@ -727,6 +789,14 @@ public class Home_Controller
     @PostMapping ("/write_for_us")
     public String Contact (Model model, @ModelAttribute Entries MyObj) throws SQLException
     {
+        // Advertisements
+        Adverisements Ad = new Adverisements();
+        ArrayList<Adverisements> ad = Ad.Horizontal();
+        model.addAttribute("ad",ad);
+        Adverisements Ad1 = new Adverisements();
+        ArrayList<Adverisements> ad1 = Ad1.Square();
+        model.addAttribute("ad1",ad1);
+
         Page_To_Open="BlogSite/WriteForUs.html";
         String Name = MyObj.getName();
         String Email = MyObj.getEmail();

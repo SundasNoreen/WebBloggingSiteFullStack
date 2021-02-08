@@ -161,9 +161,16 @@ public class Entries {
             con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
             Class.forName("com.mysql.cj.jdbc.Driver");
             String query = "INSERT INTO `write_for_us`(`Name`, `Email`, `Intro`, `Phone`, `City`, `Title`, `Blog`) " +
-                    "VALUES ('" + Name + "','" + Email + "','" + Intro + "','" + Phone + "','" + City + "','" + Title + "','" + Blog + "')";
-            Statement stmt = con.prepareStatement(query);
-            stmt.executeUpdate(query);
+                    "VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, Name);
+            st.setString(2,Email);
+            st.setString(3,Intro);
+            st.setString(4,Phone);
+            st.setString(5,City);
+            st.setString(6,Title);
+            st.setString(7,Blog);
+            st.executeUpdate();
             return true;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

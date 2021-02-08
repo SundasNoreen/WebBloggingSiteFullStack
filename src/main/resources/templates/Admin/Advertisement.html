@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .form-header
+    {
+        margin-top: 20px;
+        margin-left: 250px;
+    }
+    .form-header h2
+    {
+        margin-top: 15px; text-align: center;
+    }
+    .form-header h3
+    {
+        margin-top: 15px; text-align: center; margin-bottom: 15px;
+    }
+    .form-header label
+    {
+        margin-top: 15px; margin-bottom: 15px; text-align: center;
+    }
+    #img1  {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    #img {
+        width:50%;
+        margin-bottom: 15px;
+        height: 30px;
+    }
+    .form-input
+    {
+        background: lightcyan; border: 1px solid black; padding: 8px; width: 100%;  margin-bottom:15px;
+    }
+    .wrap{
+        width: 600px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+    @media only screen and (max-width: 600px) {
+        .wrap{
+            width:400px;
+            border: 2px solid grey;
+            padding: 1rem;}
+        .but{
+            border: 1px solid;
+            color: black;
+            padding: 3px;
+            alignment: center;
+            width: 100%;
+        }
+    }
+    .but{
+        background: darkcyan; font-weight: bold; border: 2px solid  ; color: black; padding: 5px;  text-transform: uppercase; cursor: pointer; alignment: center;width: 100%;
+    }
+    .wrap p{
+        margin-top: 5px;
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <form action = "" class="wrap"  method = "post" enctype="multipart/form-data" multiple = "true">
+        <h3>Horizontal Advertisement</h3>
+        <label>Link for the Advertisement Site</label><br>
+        <input type = "text" class="form-input" name = "link_hor" placeholder = "Link" autofocus required /><br>
+        <label for="img">Select Advertisement Poster:</label>
+        <input type="file" id="img" name="Image1" accept="image/*" required>
+<!--        <input type = "submit" class="but" value = "Add Advertisement" />-->
+        <h3>Square Advertisement</h3>
+        <label>Link for the Advertisement Site</label><br>
+        <input type = "text" class="form-input" name = "link_ver" placeholder = "Link" autofocus required  /><br>
+        <label for="img">Select Advertisement Poster:</label>
+        <input type="file" id="img1" name="Image2" accept="image/*" required>
+        <input type = "submit" class="but" value = "Add Advertisement" />
+        <p th:text="${msg}">Error</p>
+    </form>
+</div>
+</body></html>

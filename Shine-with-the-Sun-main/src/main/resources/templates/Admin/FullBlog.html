@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General :: stylesheet"></div>
+<style>
+    .header{
+        margin-left:250px;
+    }
+    .header h3
+    {
+        margin-top: 8px;
+        text-align: center;
+    }
+    .header h4
+    {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+        font-size: 17px;
+    }
+    .header h5
+    {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: darkcyan;
+    }
+    p{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="header" th:each="a:${a}">
+    <h3 th:text="${a.Title}">Title</h3>
+    <h4>Author: </h4>
+    <h5 th:text="${a.Author}"></h5>
+    <h4>Date:</h4>
+    <h5 th:text="${#dates.format(a.date, 'dd-MMMM-yyyy')}">22-January-2021</h5>
+    <h4>Category:</h4>
+    <h5 th:text="${a.Category}"></h5>
+    <h4>Admin ID:</h4>
+    <h5 th:text="${a.Admin}"></h5>
+    <h4>Blog Content:</h4>
+    <p  th:utext="${#strings.replace(a.Blog,'&#10;','&lt;br&gt;')}">
+                This is my Blog.
+    </p>
+            <h4>Disclaimer:</h4>
+            <p  th:utext="${#strings.replace(a.Disclaimer,'&#10;','&lt;br&gt;')}">
+                This is my Blog.
+            </p>
+
+        </div></div>
+</body></html>

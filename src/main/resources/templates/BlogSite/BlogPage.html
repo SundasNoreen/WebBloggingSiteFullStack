@@ -67,11 +67,6 @@
                     </div>
 
                     <div class="sidebar-widget">
-                        <div class="image">
-                        </div>
-                    </div>
-
-                    <div class="sidebar-widget">
                         <div class="tab-news">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item">
@@ -83,16 +78,21 @@
                                 <div class="tn-img">
                                     <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
                                 </div>
-                                    <div class="tn-title">
+                                <div class="tn-title">
                                         <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
-                                    </div>
-                            </div>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="sidebar-widget">
+                        <div class="image" th:each="ad:${ad1}">
+                            <a th:href="@{${ad.link_ver}}" target="_blank"><img th:src="@{'data:image/jpg;base64,'+${ad.AdVer}}"/></a>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>

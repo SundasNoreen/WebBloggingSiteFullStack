@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/MainStyleHead :: styles"></head>
+<body>
+<div th:replace="fragments/TopBar :: myheadernav"></div>
+<div th:replace="fragments/TitleBar :: mytitle"></div>
+<div th:replace="fragments/NavBar :: mynav"></div>
+<div class="contact">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="contact-form">
+                            <form th:action="@{/write_for_us}" method="post">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" id="Name"  name="Name" class="form-control" placeholder="Your Name" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="email" id="Email"  name="Email" class="form-control" placeholder="Your Email" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" id="City" name="City" class="form-control" placeholder="City" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="tel" id="Phone"  name="Phone" class="form-control" placeholder="Phone Number" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="Title"  name="Title" class="form-control" placeholder="Title of Blog" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control"  name="Blog" id="Blog" rows="15" placeholder="Blog (Minimum 300 Words)"></textarea>
+
+                                    <div class="form-group">
+                                        <textarea class="form-control"  name="intro" id="intro" rows="2" placeholder="About Yourself (Minimum 100 Words)"></textarea>
+                                    </div>
+                                <div><button class="btn" type="submit">Submit Blog</button></div>
+                                <p style="font-size: 18px; color: darkcyan; font-weight: bold" th:text="${msg}" >Message</p>
+                                </div></form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info">
+                            <h3>Get in Touch</h3>
+                            <p>
+                                Our Team is always here to help you. Follow us on Social Media to stay upated with our Recent Blogs.You can Contact us at:
+                            </p>
+                            <h4><i class="fa fa-map-marker"></i>Multan Cantt</h4>
+                            <h4><i class="fa fa-envelope"></i>shine.with.the.sun@gmail.com</h4>
+                            <h4><i class="fa fa-phone"></i>+92 321 4567890</h4>
+                            <div class="social">
+                                <a href="https://twitter.com/NoreenSundas" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/snoreen921/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/in/sundas-noreen/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div th:replace="fragments/Footer :: foot"></div>
+</body>
+</html>

@@ -40,9 +40,16 @@ public class Admin_Blogs
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String query = "INSERT INTO `blogs`(`Title`, `Category`, `Author`, `AuthorID`, `Blog`, `Admin`, `Pic`) VALUES ('" + Title + "','" + Category + "','" + Author + "','" + AuthorID + "','" + Blog + "','" + Admin + "','" + Pic + "' )";
-            Statement stmt = con.prepareStatement(query);
-            stmt.execute(query);
+            String query = "INSERT INTO `blogs`(`Title`, `Category`, `Author`, `AuthorID`, `Blog`, `Admin`, `Pic`) VALUES (?,?,?,?,?,?,? )";
+            PreparedStatement st = con.prepareStatement(query);
+            st.setString(1, Title);
+            st.setString(2,Category);
+            st.setString(3,Author);
+            st.setInt(4,AuthorID);
+            st.setString(5,Blog);
+            st.setString(6,Admin);
+            st.setBytes(7,Pic);
+            st.executeUpdate();
             return true;
         } catch (Exception ex)
         {
@@ -104,35 +111,7 @@ public class Admin_Blogs
         }
     }
 
-    public boolean Blog (String Title, String Category, String Author, int AuthorID, String Blog, String Admin, MultipartFile image) throws SQLException, IOException {
-        this.Title=Title;
-        this.Category=Category;
-        this.Author=Author;
-        this.AuthorID=AuthorID;
-        this.Blog=Blog;
-        this.Admin = Admin;
-//        InputStream picture = image.getInputStream();
-//        picture.
-        byte[] Picture =image.getBytes();
-        Blob blob = new SerialBlob(Picture);
-        try
-        {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String query = "INSERT INTO `blogs`(`Title`, `Category`, `Author`, `AuthorID`, `Blog`, `Admin`, `Pic`) VALUES ('" + Title + "','" + Category + "','" + Author + "','" + AuthorID + "','" + Blog + "','" + Admin + "','" + Picture + "' )";
-            Statement stmt = con.prepareStatement(query);
-            stmt.execute(query);
-            return true;
-        } catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-            return false;
-        }
-        finally
-        {
-            con.close();
-        }
-    }
+
 
 
 }

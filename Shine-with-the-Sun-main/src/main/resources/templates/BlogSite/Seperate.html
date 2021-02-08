@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/MainStyleHead :: styles"></head>
+<body>
+<div th:replace="fragments/TopBar :: myheadernav"></div>
+<div th:replace="fragments/TitleBar :: mytitle"></div>
+<div th:replace="fragments/NavBar :: mynav"></div>
+<div class="main-news">
+    <h2 th:text="${Category}" style="text-align:center; margin: 10px; text-transform: uppercase; font-size: 25px;">You may also Like:</h2>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-4" th:each="j: ${a}">
+                    <div class="mn-img">
+                        <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
+                        <div class="cat-name"><h5 th:text="${j.Category}">Category</h5></div>
+                        <div class="mn-title">
+                            <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
+                        </div>
+                    </div>
+                    <h6 style="margin: 5px;text-transform: uppercase;font-weight: bold " th:text="${#dates.format(j.date, 'MMMM dd, yyyy')}">January 21, 2021</h6>
+                    <a th:href="@{/author_{id}(id = ${j.AuthorID})}" style="margin: 5px;color:darkcyan;text-transform: uppercase;font-weight: bold " th:text="${j.Author}">Author Name</a>
+                    <p id="is" style="margin-left: 3px;  text-align: justify; "
+                            th:text=" ${#strings.substring(j.Blog,0,99)}+ ' ... '  "></p>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Start -->
+<div th:replace="fragments/Footer :: foot"></div>
+
+
+</body>
+</html>
