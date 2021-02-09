@@ -9,6 +9,9 @@ Awareness and discussing opinions on all sort of issues is very necessary in thi
  <li>Viewers can easily filter and look for a specific blog.</li>
  <li>Viewers can also send their blogs through aform available at the site. If administrators find it interesting and according to their stance, they will publish it.</li>
  <li>Admins can simply Login using their IDs and Passwords. They can add, edit, remove blogs and manage other responsibilities and working of the Site.</li>
+ <li>Views to Blogs will also be calculated on run-time whenever a blog is opened for reading.</li>
+ <li>Advertisements can also be displayed.</li>
+               
 </ol>
 
 <h3>Tools Used</h3>
