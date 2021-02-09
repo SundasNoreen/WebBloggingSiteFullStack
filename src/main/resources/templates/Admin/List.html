@@ -44,6 +44,7 @@ table a{
             <td><strong>Title</strong></td>
             <td><strong>Author</strong></td>
             <td><strong>Date</strong></td>
+            <td><strong>Views</strong></td>
             <td><strong>Read</strong></td>
             <td><strong>Edit</strong></td>
             <td><strong>Delete</strong></td>
@@ -53,6 +54,7 @@ table a{
             <td th:text="${a.Title}">Title</td>
             <td th:text="${a.Author}">Author</td>
             <td th:text="${#dates.format(a.date, 'dd-MM-yyyy')}">21-01-2021</td>
+            <td th:text="${a.Views}">255</td>
             <td><a th:href="@{/read_{id}(id = ${a.BlogID})}">Read</a></td>
             <td><a th:href="@{/edit_{id}(id = ${a.BlogID})}">Edit</a></td>
             <td><a th:href="@{/delete_{id}(id = ${a.BlogID})}">Delete</a></td>

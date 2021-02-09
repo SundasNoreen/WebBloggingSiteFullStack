@@ -160,5 +160,26 @@ public class Adverisements
             con.close();
         }}
     }
+    public boolean Clear_All () throws SQLException
+    {
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            PreparedStatement st = con.prepareStatement("TRUNCATE TABLE horizontal_ad");
+            st.executeUpdate();
+            PreparedStatement stmt = con.prepareStatement("TRUNCATE TABLE square_ad");
+            stmt.executeUpdate();
+            return true;
+        } catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        finally
+        {
+            con.close();
+        }
+    }
+
 
 }

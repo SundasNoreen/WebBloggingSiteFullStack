@@ -226,16 +226,16 @@
 <div class="main-news">
     <div class="container">
         <div class="row">
-                <h2>You may also Like:</h2>
+                <h2>YOU MAY ALSO LIKE</h2>
                 <div class="row">
-                    <div class="col-md-3" th:each="j: ${j}">
+                    <div class="col-md-3" th:each="k: ${k}">
                         <div class="mn-img">
-                            <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
-                            <div class="cat-name"><h5 th:text="${j.Category}">Category</h5></div>
-                            <div class="date"><h6 th:text="${#dates.format(j.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                            <img th:src="@{'data:image/jpg;base64,'+${k.encode}}"/>
+                            <div class="cat-name"><h5 th:text="${k.Category}">Category</h5></div>
+                            <div class="date"><h6 th:text="${#dates.format(k.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
                             </div>
                             <div class="mn-title">
-                                <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
+                                <a th:href="@{/blog_{id}(id = ${k.BlogID})}" th:text="${k.Title}">Title</a>
                             </div>
                         </div>
                     </div>
@@ -244,7 +244,28 @@
     </div>
 </div>
 <!-- Main News End-->
-
+<!-- Main News Start-->
+<div class="main-news">
+    <div class="container">
+        <div class="row">
+            <h2>POPULAR</h2>
+            <div class="row">
+                <div class="col-md-3" th:each="j: ${j}">
+                    <div class="mn-img">
+                        <img th:src="@{'data:image/jpg;base64,'+${j.encode}}"/>
+                        <div class="cat-name"><h5 th:text="${j.Category}">Category</h5></div>
+                        <div class="date"><h6 th:text="${#dates.format(j.date, 'dd-MMM-yyyy')}">22-May-2020</h6>
+                        </div>
+                        <div class="mn-title">
+                            <a th:href="@{/blog_{id}(id = ${j.BlogID})}" th:text="${j.Title}">Title</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main News End-->
 <!-- Footer Start -->
 <div th:replace="fragments/Footer :: foot"></div>
 

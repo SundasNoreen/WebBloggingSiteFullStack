@@ -665,6 +665,34 @@ public class Home_Controller
             return Data.Connection("BlogSite/SignIn.html",Error_Page);
         }
     }
+    // Clear a Particular Entry.
+    @RequestMapping ("/clear_ads")
+    public String Clear_Ads (Model model) throws SQLException
+    {
+        String Msg;
+        if (flag!=1)
+        {
+            Page_To_Open = "Admin/Advertisement.html";
+            Adverisements NOW = new Adverisements();
+            boolean ms = NOW.Clear_All();
+            if (ms)
+            {
+                Msg="Advertisements Deleted Successfully.";
+                model.addAttribute("msg", Msg);
+            }
+            else
+            {
+                Msg="Error in Deleting Advertisements, Try Again .";
+                model.addAttribute("msg", Msg);
+            }
+            return Data.Connection(Page_To_Open, Error_Page);
+        }
+        else
+        {
+            model.addAttribute("error","You Need to Login First.");
+            return Data.Connection("BlogSite/SignIn.html",Error_Page);
+        }
+    }
 
 
     //************************************ BLOG SITE ***************************************//
@@ -702,9 +730,11 @@ public class Home_Controller
         model.addAttribute("h",h);
         ArrayList<Blog> i = MyObj.Category_Wise("Health");
         model.addAttribute("i",i);
-        // Some Suggested Blogs.
-        ArrayList <Blog> j = MyObj.Suggested_Blogs();
+        // Most Viewed.
+        ArrayList <Blog> j = MyObj.Most_Viewed();
         model.addAttribute("j",j);
+        ArrayList <Blog> k = MyObj.Suggested_Blogs();
+        model.addAttribute("k",k);
         return Data.Connection(Page_To_Open,Error_Page);
     }
 
@@ -747,10 +777,10 @@ public class Home_Controller
         Home_Page MyObj = new Home_Page();
         ArrayList<Blog> b = MyObj.First_Four_Blogs();
         model.addAttribute("b",b);
-        ArrayList<Blog> j = MyObj.Suggested_Blogs();
-        model.addAttribute("j",j);
         ArrayList<Blog> c = MyObj.Category_Wise(Category);
         model.addAttribute("c",c);
+        ArrayList<Blog> j = MyObj.Most_Viewed();
+        model.addAttribute("j",j);
         return Data.Connection(Page_To_Open,Error_Page);
     }
 
@@ -796,7 +826,7 @@ public class Home_Controller
         Adverisements Ad1 = new Adverisements();
         ArrayList<Adverisements> ad1 = Ad1.Square();
         model.addAttribute("ad1",ad1);
-
+        // SUbmit Your Blogs.
         Page_To_Open="BlogSite/WriteForUs.html";
         String Name = MyObj.getName();
         String Email = MyObj.getEmail();

@@ -434,7 +434,22 @@ margin-right: auto;        width: 450px;
     font-size: 15px;
     font-weight: bold;
 }
-
+.date1 h6 {
+    text-align: right;
+    color:white;
+    padding: 5px 5px 5px 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.fa-eye  {
+    text-align: right;
+    margin-top: 0px;
+    color:cyan;
+    background: black;
+    padding: 5px 5px 5px 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
 .top-news .tn-left .tn-title a {
     font-size: 28px;
     font-weight: 600;
@@ -1101,7 +1116,7 @@ margin-right: auto;        width: 450px;
 
 .sidebar .news-list .nl-item .nl-img img {
     width: 100px;
-    height: 68px;
+    height: 60px;
 }
 
 .sidebar .news-list .nl-item .nl-title {
@@ -1153,10 +1168,12 @@ margin-right: auto;        width: 450px;
 
 .sidebar .tab-news .tn-img {
     width: 100px;
+
 }
 
 .sidebar .tab-news .tn-img img {
     width: 100px;
+    height: 60px;
 }
 
 .sidebar .tab-news .tn-title {

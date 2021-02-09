@@ -16,7 +16,7 @@ public class Blog
     private byte[] Pic;
     private String encode;
     private Date date;
-
+    private int Views;
 
     public void setBlogID(int BlogID) {
         this.BlogID = BlogID;
@@ -58,8 +58,16 @@ public class Blog
         this.date = date;
     }
 
+    public void setViews(int Views) {
+        this.Views = Views;
+    }
+
     public int getBlogID() {
         return BlogID;
+    }
+
+    public int getViews() {
+        return Views;
     }
 
     public String getEncode(){return encode;}
@@ -104,10 +112,12 @@ public class Blog
         return date;
     }
 
+
     Blog(){}
 
-    Blog(int BlogID, String Title, String Category, String Author, int AuthorID, String Blog, String Disclaimer, String Admin, String encode, Date date) {
+    Blog(int BlogID,int Views, String Title, String Category, String Author, int AuthorID, String Blog, String Disclaimer, String Admin, String encode, Date date) {
         this.BlogID = BlogID;
+        this.Views=Views;
         this.Title = Title;
         this.Category=Category;
         this.Author = Author;

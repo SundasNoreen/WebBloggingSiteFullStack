@@ -19,6 +19,7 @@ public class List_Of_Blogs
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
+    private int Views;
     private ArrayList<Blog> BlogPosts = new ArrayList<Blog>();
 
     public ArrayList category_page(String Category) throws SQLException
@@ -41,8 +42,9 @@ public class List_Of_Blogs
                 Admin = rs.getString(8);
                 Pic = rs.getBytes(9);
                 date = rs.getDate(10);
-                String encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                Views = rs.getInt(11);
+                encode = Base64.getEncoder().encodeToString(Pic);
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         } catch (Exception ex)
         {
@@ -75,8 +77,9 @@ public class List_Of_Blogs
                 Admin = rs.getString(8);
                 Pic = rs.getBytes(9);
                 date = rs.getDate(10);
+                Views = rs.getInt(11);
                 String encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID, Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         }
         catch (Exception ex)
@@ -108,8 +111,9 @@ public class List_Of_Blogs
                 Admin = rs.getString(8);
                 Pic = rs.getBytes(9);
                 date = rs.getDate(10);
+                Views = rs.getInt(11);
                 String encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         } catch (Exception ex)
         {

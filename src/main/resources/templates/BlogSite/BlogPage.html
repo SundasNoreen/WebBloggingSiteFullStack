@@ -14,10 +14,11 @@
                     <div class="sn-img">
                         <img th:src="@{'data:image/jpg;base64,'+${a.encode}}"/>
                         <div class="cat-name"><h5 th:text="${a.Category}">Category</h5></div>
-                        <div class="date1"></div>
+                        <div class="date1"><h6><i class="fa fa-eye" aria-hidden="true" th:text="' '+${a.Views}">Views</i></h6></div>
                     </div>
                     <div class="sn-content">
                         <h1 style="font-size: 23px;" class="sn-title" th:text="${a.Title}">Title</h1>
+                        <h2 style="font-size: 16px; color:black ;" th:text=" ${a.Views} +' Views'">Views</h2>
                         <a style="font-weight: bold;color: darkcyan; text-transform: uppercase; font-size: 18px" th:href="@{/author_{id}(id = ${a.AuthorID})}" th:text="${a.Author}">Author</a>
                         <h2 style="font-size: 16px; margin-bottom: 10px;" th:text="${#dates.format(a.date, 'MMMM dd,yyyy')}">January 22,2021</h2>
                         <p  th:utext="${#strings.replace(a.Blog,'&#10;','&lt;br&gt;')}">
@@ -70,7 +71,7 @@
                         <div class="tab-news">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="pill" href="#featured">Featured</a>
+                                    <a class="nav-link active" data-toggle="pill" href="#featured">Popular</a>
                                 </li>
                             </ul>
                             <br>

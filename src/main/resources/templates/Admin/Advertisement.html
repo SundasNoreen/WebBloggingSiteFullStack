@@ -63,13 +63,12 @@
 <div th:replace="fragments/General :: sidebar"></div>
 <div class="form-header">
     <form action = "" class="wrap"  method = "post" enctype="multipart/form-data" multiple = "true">
-        <h3>Horizontal Advertisement</h3>
+        <h3>Add Horizontal Advertisement</h3>
         <label>Link for the Advertisement Site</label><br>
         <input type = "text" class="form-input" name = "link_hor" placeholder = "Link" autofocus required /><br>
         <label for="img">Select Advertisement Poster:</label>
         <input type="file" id="img" name="Image1" accept="image/*" required>
-<!--        <input type = "submit" class="but" value = "Add Advertisement" />-->
-        <h3>Square Advertisement</h3>
+        <h3>Add Square Advertisement</h3>
         <label>Link for the Advertisement Site</label><br>
         <input type = "text" class="form-input" name = "link_ver" placeholder = "Link" autofocus required  /><br>
         <label for="img">Select Advertisement Poster:</label>
@@ -77,5 +76,6 @@
         <input type = "submit" class="but" value = "Add Advertisement" />
         <p th:text="${msg}">Error</p>
     </form>
+<!--    <h3 style="color: darkcyan; text-transform: uppercase; border-bottom: #660033 2px;"><a th:href="@{/clear_ads}">Clear All Advertisements</a></h3>-->
 </div>
 </body></html>

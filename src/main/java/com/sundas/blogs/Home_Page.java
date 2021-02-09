@@ -20,6 +20,7 @@ public class Home_Page
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
+    private int Views;
     private ArrayList<Blog> BlogPosts = new ArrayList<Blog>();
 
     // First Four Blogs.
@@ -41,8 +42,9 @@ public class Home_Page
                 Admin = rs.getString(8);
                 Pic = rs.getBytes(9);
                 date = rs.getDate(10);
+                Views = rs.getInt(11);
                 encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         }
         catch (Exception ex)
@@ -79,8 +81,9 @@ public class Home_Page
                 String Admin = rs.getString(8);
                 byte[]Pic = rs.getBytes(9);
                 Date date = rs.getDate(10);
+                int Views = rs.getInt(11);
                 String encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         }
         catch (Exception ex)
@@ -115,8 +118,9 @@ public class Home_Page
                 String Admin = rs.getString(8);
                 byte[]Pic = rs.getBytes(9);
                 Date date = rs.getDate(10);
+                int Views = rs.getInt(11);
                 String encode=Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
         } catch (Exception ex)
         {
@@ -124,6 +128,46 @@ public class Home_Page
         }
         return BlogPosts;
     }
+
+    // Most Viewed.
+    public static ArrayList Most_Viewed() throws SQLException
+    {
+        ArrayList<Blog> BlogPosts = new ArrayList<>();
+        Connection con = null;
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM blogs ORDER BY Views DESC LIMIT 0,8");
+            BlogPosts.clear();
+            while (rs.next()) {
+                int BlogID = rs.getInt(1);
+                String Title = rs.getString(2);
+                String Category = rs.getString(3);
+                String Author = rs.getString(4);
+                int AuthorID = rs.getInt(5);
+                String Blog = rs.getString(6);
+                String Disclaimer = rs.getString(7);
+                String Admin = rs.getString(8);
+                byte[]Pic = rs.getBytes(9);
+                Date date = rs.getDate(10);
+                int Views = rs.getInt(11);
+                String encode=Base64.getEncoder().encodeToString(Pic);
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Failed to Load Posts.");
+        }
+        finally {
+            con.close();
+        }
+        return BlogPosts;
+    }
+
+
 }
 
 

@@ -20,6 +20,7 @@ public class Complete_Blog
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
+    private int Views;
     private ArrayList<Blog> BlogPosts = new ArrayList<Blog>();
 
     public ArrayList Full_Blog(int id) throws SQLException
@@ -43,9 +44,15 @@ public class Complete_Blog
                 Admin = rs.getString(8);
                 Pic = rs.getBytes(9);
                 date = rs.getDate(10);
+                int V = rs.getInt(11);
+                Views = V+1;
                 encode = Base64.getEncoder().encodeToString(Pic);
-                BlogPosts.add(new Blog(BlogID, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
+                BlogPosts.add(new Blog(BlogID,Views, Title, Category, Author, AuthorID, Blog, Disclaimer, Admin, encode, date));
             }
+            String query = "UPDATE `blogs` SET`Views`=? WHERE BlogID  ='" + id + "'";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt(1, Views);
+            preparedStmt.executeUpdate();
         }
         catch (Exception ex)
         {
