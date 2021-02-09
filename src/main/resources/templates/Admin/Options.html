@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="fragments/General :: header"></head>
+<div th:replace="fragments/General:: stylesheet"></div>
+<style>
+    .form-header
+    {
+        margin-left: 250px;
+    }
+    .form-header h3{
+        margin-bottom: 50px; margin-top:10px; text-align: center;
+    }
+    .form-header label
+    {
+        margin-top: 15px; margin-bottom: 15px; text-align: center; margin-left: 2px;
+    }
+    .wrap{
+        width: 500px; margin: 0 auto; border: 3px solid grey; padding: 2rem; background:#F8F8FF;
+    }
+    @media only screen and (max-width: 600px) {
+        .wrap{
+            width:350px;
+            border: 2px solid grey;
+            padding: 1rem;}
+        .but{
+            border: 1px solid;
+            color: black;
+            padding: 3px;
+            alignment: center;
+            width: 100%;
+        }
+    }
+    .but{
+        text-align:center;background: darkcyan;color:black;
+        padding: 5px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        text-align: center;font-weight: bold; border: 2px solid  ; cursor: pointer; alignment: center;width: 100%;
+    }
+    .but a{
+        color:black;
+        padding: 5px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+</style>
+<body>
+<div th:replace="fragments/General :: sidebar"></div>
+<div class="form-header">
+    <h3>Select a Category</h3>
+    <form action = "" class="wrap"  method = "post">
+        <div class="but"><a th:href="@{/add_ads}">Add Advertisements</a></div>
+        <div class="but"><a th:href="@{/clear}">Clear Advertisements</a></div>
+    </form>
+</div>
+</body></html>

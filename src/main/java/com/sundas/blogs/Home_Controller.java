@@ -623,8 +623,23 @@ public class Home_Controller
         }
     }
 
-    @GetMapping ("/ads")
+    @RequestMapping ("/ads")
     public String Ads (Model model) throws SQLException
+    {
+        if (flag!=1)
+        {
+            Page_To_Open = "Admin/Options.html";
+            return Data.Connection(Page_To_Open, Error_Page);
+        }
+        else
+        {
+            model.addAttribute("error","You Need to Login First.");
+            return Data.Connection("BlogSite/SignIn.html",Error_Page);
+        }
+    }
+
+    @GetMapping ("/add_ads")
+    public String Ads1 (Model model) throws SQLException
     {
         if (flag!=1)
         {
@@ -638,7 +653,7 @@ public class Home_Controller
         }
     }
 
-    @PostMapping ("/ads")
+    @PostMapping ("/add_ads")
     public String ads (Model model, @ModelAttribute Adverisements MyObj,@ModelAttribute Adverisements mnb,
                        @ModelAttribute("Image1") MultipartFile Image1, @ModelAttribute ("Image2") MultipartFile Image2) throws SQLException, IOException {
         if (flag!=1) {
@@ -650,11 +665,11 @@ public class Home_Controller
             String Ver_Link = mnb.getLink_ver();
             byte[] Ver_It = Image2.getBytes();
             boolean Flag2 = mnb.Add_Square_Ad(Ver_Link, Ver_It);
-            if (Flag1||Flag2) {
+            if (Flag1&&Flag2) {
                 Msg = "Advertisements Added Successfully.";
                 model.addAttribute("msg", Msg);
             } else {
-                Msg = "Advertisement couldn't be Added. Try Again Later.";
+                Msg = "Advertisement couldn't be Added. The Size of Posters is very Large. Try Again.";
                 model.addAttribute("msg", Msg);
             }
             return Data.Connection(Page_To_Open, Error_Page);
@@ -665,14 +680,28 @@ public class Home_Controller
             return Data.Connection("BlogSite/SignIn.html",Error_Page);
         }
     }
-    // Clear a Particular Entry.
+
+    @RequestMapping ("/clear")
+    public String Clear (Model model) throws SQLException
+    {
+        if (flag!=1)
+        {
+            Page_To_Open = "Admin/Clear.html";
+            return Data.Connection(Page_To_Open, Error_Page);
+        }
+        else
+        {
+            model.addAttribute("error","You Need to Login First.");
+            return Data.Connection("BlogSite/SignIn.html",Error_Page);
+        }
+    }
     @RequestMapping ("/clear_ads")
     public String Clear_Ads (Model model) throws SQLException
     {
         String Msg;
         if (flag!=1)
         {
-            Page_To_Open = "Admin/Advertisement.html";
+            Page_To_Open = "Admin/Clear.html";
             Adverisements NOW = new Adverisements();
             boolean ms = NOW.Clear_All();
             if (ms)
