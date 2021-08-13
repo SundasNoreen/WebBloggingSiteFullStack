@@ -7,7 +7,8 @@ public class DatabaseConnection {
         Connection con = null;
         try
         {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/blogs", "root", "");
+            String url ="jdbc:mysql://vacation-planner.mysql.database.azure.com:3306/blogs?useSSL=true&requireSSL=false";
+            con = DriverManager.getConnection(url, "sundasnoreen@vacation-planner","Sundas1234");
             Class.forName("com.mysql.cj.jdbc.Driver");
             return a;
         }
@@ -17,3 +18,4 @@ public class DatabaseConnection {
         }
     }
 }
+
